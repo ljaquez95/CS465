@@ -1,0 +1,21 @@
+{{> header}}
+
+<h1>{{title}}</h1>
+
+<div class="trip-list">
+  {{#each trips}}
+    <div class="trip">
+      <h2>{{name}}</h2>
+      <img src="/images/{{image}}" alt="{{name}}">
+      <p>{{description}}</p>
+      <p><strong>Resort:</strong> {{resort}}</p>
+      <p><strong>Length:</strong> {{length}}</p>
+      <p><strong>Price per Person:</strong> {{perPerson}}</p>
+      <p><strong>Start Date:</strong> {{start}}</p>
+    </div>
+  {{/each}}
+</div>
+
+{{> footer}}
+
+
