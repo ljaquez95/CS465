@@ -6,7 +6,9 @@
   {{#each trips}}
     <div class="trip">
       <h2>{{name}}</h2>
-      <img src="/images/{{image}}" alt="{{name}}">
+      <a href="/api/trips/{{this.code}}">
+        <img src="{{image}}" alt="{{name}}">
+      </a>
       <p>{{description}}</p>
       <p><strong>Resort:</strong> {{resort}}</p>
       <p><strong>Length:</strong> {{length}}</p>
