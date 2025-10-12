@@ -1,6 +1,11 @@
 require('./app_server/models/db'); 
 
 const express = require('express');
+
+const cors = require('cors');
+
+
+
 const path = require('path');
 const hbs = require('express-handlebars');
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
@@ -11,6 +16,9 @@ const travelRoute = require('./app_server/routes/travel');
 const apiRouter = require('./app_api/routes/index');
 
 const app = express();
+
+app.use(cors());
+
 
 app.engine('hbs', hbs.engine({
   extname: 'hbs',

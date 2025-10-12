@@ -28,6 +28,19 @@
     "perPerson": "1999.00",
     "image": "reef3.jpg",
     "description": "Claire's Reef — Donec sed felis risus. Nulla facilisi."
+  },
+
+  {
+    "code": "MEGR220119",
+    "name": "Most Excellent Mega Reef",
+    "length": "6 nights / 7 days",
+    "start": "2025-10-13T08:00:00Z",
+    "resort": "Barrier Island Resort, 5 stars",
+    "perPerson": 3499.00,
+    "image": "reef3.jpg",
+    "description": "The great barrier reef awaits!"
   }
+  
+
 ]
 
