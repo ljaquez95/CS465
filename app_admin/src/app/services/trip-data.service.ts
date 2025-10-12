@@ -7,24 +7,27 @@ import { Trip } from '../models/trip';
   providedIn: 'root'
 })
 export class TripDataService {
-  private apiUrl = 'http://localhost:3000/api/trips';
+  private url = 'http://localhost:3000/api/trips'; // Backend API URL
 
   constructor(private http: HttpClient) {}
 
+  // Method to retrieve all trips
   getTrips(): Observable<Trip[]> {
-    return this.http.get<Trip[]>(this.apiUrl);
+    return this.http.get<Trip[]>(this.url);
   }
 
-  addTrip(trip: Trip): Observable<Trip> {
-    return this.http.post<Trip>(this.apiUrl, trip);
+  // Method to add a new trip
+  addTrip(formData: Trip): Observable<Trip> {
+    return this.http.post<Trip>(this.url, formData);
   }
 
-  getTrip(code: string): Observable<Trip[]> {
-    return this.http.get<Trip[]>(`${this.apiUrl}/${code}`);
+  // Method to retrieve a single trip by tripCode
+  getTrip(tripCode: string): Observable<Trip> {
+    return this.http.get<Trip>(`${this.url}/${tripCode}`);
   }
 
-  updateTrip(trip: Trip): Observable<Trip> {
-    return this.http.put<Trip>(`${this.apiUrl}/${trip.code}`, trip);
+  // Method to update an existing trip
+  updateTrip(formData: Trip): Observable<Trip> {
+    return this.http.put<Trip>(`${this.url}/${formData.code}`, formData);
   }
 }
-
