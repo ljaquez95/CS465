@@ -32,8 +32,50 @@ const tripReadOne = async (req, res) => {
   }
 };
 
+
+
+const tripsAddOne = async (req, res) => {
+  if (!mongoose.connection.readyState) {
+    return res.status(500).json({ message: "Database not connected" });
+  }
+  try {
+    const trip = new Trip(req.body);
+    await trip.save();
+    res.status(201).json(trip);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+const tripsUpdateOne = async (req, res) => {
+  if (!mongoose.connection.readyState) {
+    return res.status(500).json({ message: "Database not connected" });
+  }
+  const tripCode = req.params.tripCode;
+  try {
+    const trip = await Trip.findOneAndUpdate({ code: tripCode }, req.body, { new: true });
+    if (!trip) {
+      return res.status(404).json({ message: "Trip not found" });
+    }
+    res.status(200).json(trip);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+
+
+
 module.exports = {
   tripsList,
   tripReadOne
+  ,
+  tripsAddOne,
+  tripsUpdateOne
+
+
 };
 

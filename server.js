@@ -1,9 +1,16 @@
+require('dotenv').config();
+
+
 require('./app_server/models/db'); 
 
 const express = require('express');
 
 const cors = require('cors');
 
+
+
+const passport = require('passport');
+require('./app_api/config/passport');
 
 
 const path = require('path');
@@ -37,11 +44,25 @@ hbs.create({}).handlebars.registerPartial(
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(passport.initialize());
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+
 app.use('/', travellerRouter);
 app.use('/travel', travelRoute);
 app.use('/api', apiRouter);
 
-const port = 3000;
+
+
+const port = process.env.PORT || 3000;
+
+
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
